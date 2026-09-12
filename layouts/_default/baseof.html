@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>
+        {{ if .IsHome }}
+            {{ .Site.Title }}
+        {{ else }}
+            {{ .Title }} | {{ .Site.Title }}
+        {{ end }}
+    </title>
+</head>
+
+<body>
+
+    <header>
+        <a href="/">
+            {{ .Site.Title }}
+        </a>
+
+        <nav>
+            <a href="/">Posts</a>
+            <a href="/about/">Sobre</a>
+        </nav>
+    </header>
+
+    <main>
+        {{ block "main" . }}
+        {{ end }}
+    </main>
+
+</body>
+</html>
