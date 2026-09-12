@@ -6,8 +6,8 @@
         {{ .Title }}
     </h1>
 
-    <time>
-        {{ .Date.Format "02/01/2006" }}
+    <time datetime="{{ .Date.Format "2006-01-02" }}">
+        {{ .Date.Format "02 de January de 2006" }}
     </time>
 
     <div>

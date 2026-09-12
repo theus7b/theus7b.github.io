@@ -1,26 +1,42 @@
 {{ define "main" }}
 
-<h1>Posts</h1>
+{{ if .Site.RegularPages }}
 
-{{ range .Site.RegularPages }}
+    {{ range .Site.RegularPages }}
 
-<article>
+    <article>
 
-    <h2>
-        <a href="{{ .RelPermalink }}">
-            {{ .Title }}
-        </a>
-    </h2>
+        <h2>
+            <a href="{{ .RelPermalink }}">
+                {{ .Title }}
+            </a>
+        </h2>
 
-    <time>
-        {{ .Date.Format "02/01/2006" }}
-    </time>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">
+            {{ .Date.Format "02/01/2006" }}
+        </time>
 
-    <p>
-        {{ .Summary }}
-    </p>
+        {{ if .Summary }}
+            <p>
+                {{ .Summary }}
+            </p>
+        {{ end }}
 
-</article>
+    </article>
+
+    {{ end }}
+
+{{ else }}
+
+    <article>
+
+        <h1>Olá.</h1>
+
+        <p>
+            Ainda não escrevi nada por aqui.
+        </p>
+
+    </article>
 
 {{ end }}
 
