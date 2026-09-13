@@ -1,43 +1,36 @@
 {{ define "main" }}
 
-{{ if .Site.RegularPages }}
+<section class="home-intro" aria-labelledby="home-title">
+    <h1 id="home-title">theus7b</h1>
+    <p class="intro-text">Escrevo sobre computadores, código, Linux e qualquer coisa que me interesse.</p>
+</section>
 
-    {{ range .Site.RegularPages }}
-
-    <article>
-
-        <h2>
-            <a href="{{ .RelPermalink }}">
-                {{ .Title }}
-            </a>
-        </h2>
-
-        <time datetime="{{ .Date.Format "2006-01-02" }}">
-            {{ .Date.Format "02/01/2006" }}
-        </time>
-
-        {{ if .Summary }}
-            <p>
-                {{ .Summary }}
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ if $posts }}
+<section class="post-list" aria-label="Arquivo de posts">
+    <p class="archive-label">Arquivo</p>
+    {{ range $posts.ByDate.Reverse }}
+    <article class="post-preview">
+        <header class="post-preview__header">
+            <p class="post-meta">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date-pt-br.html" .Date }}</time>
             </p>
+            <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        </header>
+
+        {{ if .Description }}
+        <p class="post-excerpt">{{ .Description }}</p>
+        {{ else }}
+        {{ with .Summary }}
+        <p class="post-excerpt">{{ . | plainify | truncate 180 }}</p>
         {{ end }}
-
+        {{ end }}
+        <a class="post-preview__link" href="{{ .RelPermalink }}">Ler post <span aria-hidden="true">&rarr;</span></a>
     </article>
-
     {{ end }}
-
+</section>
 {{ else }}
-
-    <article>
-
-        <h1>Olá.</h1>
-
-        <p>
-            Ainda não escrevi nada por aqui.
-        </p>
-
-    </article>
-
+<p class="empty-state">Ainda não escrevi nada por aqui.</p>
 {{ end }}
 
 {{ end }}

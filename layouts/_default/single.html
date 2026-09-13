@@ -1,19 +1,22 @@
 {{ define "main" }}
 
-<article>
+<article class="article">
+    <header class="article-header">
+        <p class="eyebrow">{{ if eq .Section "posts" }}Post{{ else }}Página{{ end }}</p>
+        <h1>{{ .Title }}</h1>
+        {{ if eq .Section "posts" }}
+        <p class="post-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date-pt-br.html" .Date }}</time>
+        </p>
+        {{ end }}
+        {{ with .Description }}
+        <p class="article-description">{{ . }}</p>
+        {{ end }}
+    </header>
 
-    <h1>
-        {{ .Title }}
-    </h1>
-
-    <time datetime="{{ .Date.Format "2006-01-02" }}">
-        {{ .Date.Format "02 de January de 2006" }}
-    </time>
-
-    <div>
+    <div class="article-body">
         {{ .Content }}
     </div>
-
 </article>
 
 {{ end }}

@@ -1,55 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1"
-    >
-
-    <meta
-        name="description"
-        content="{{ .Site.Title }}"
-    >
-
-    <title>
-        {{ if .IsHome }}
-            {{ .Site.Title }}
-        {{ else }}
-            {{ .Title }} | {{ .Site.Title }}
-        {{ end }}
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="{{ "css/style.css" | relURL }}"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ if .IsPage }}{{ .Summary | plainify | truncate 160 }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
 
-    <header>
-        <a href="/">
-            {{ .Site.Title }}
-        </a>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-title" href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
 
-        <nav>
-            <a href="/">Posts</a>
-            <a href="/about/">Sobre</a>
-        </nav>
+            <nav class="site-nav" aria-label="Navegação principal">
+                <a href="{{ .Site.Home.RelPermalink }}"{{ if or .IsHome (eq .Section "posts") }} aria-current="page"{{ end }}>Posts</a>
+                <a href="{{ "about/" | relURL }}"{{ if eq .RelPermalink "/about/" }} aria-current="page"{{ end }}>Sobre</a>
+            </nav>
+        </div>
     </header>
 
-    <main>
+    <main id="main-content" class="site-main">
         {{ block "main" . }}
         {{ end }}
     </main>
 
-    <footer>
-        © {{ now.Year }} {{ .Site.Title }}
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <p>&copy; {{ now.Year }} {{ .Site.Title }}</p>
+            <p>Feito com Hugo.</p>
+        </div>
     </footer>
-
 </body>
 
 </html>
