@@ -1,3 +1,7 @@
 baseURL = 'https://theus7b.github.io/'
-languageCode = 'pt-br'
+languageCode = 'pt-BR'
 title = 'theus7b'
+disableKinds = ['taxonomy', 'term', 'section']
+
+[params]
+description = 'Um canto pessoal na internet para escrever sobre computadores, programação, Linux e o que mais der vontade.'
