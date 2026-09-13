@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ if .IsPage }}{{ .Summary | plainify | truncate 160 }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
     <link rel="canonical" href="{{ .Permalink }}">
+    <script src="{{ "js/theme.js" | relURL }}"></script>
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 </head>
@@ -20,6 +21,15 @@
             <nav class="site-nav" aria-label="Navegação principal">
                 <a href="{{ .Site.Home.RelPermalink }}"{{ if or .IsHome (eq .Section "posts") }} aria-current="page"{{ end }}>Posts</a>
                 <a href="{{ "about/" | relURL }}"{{ if eq .RelPermalink "/about/" }} aria-current="page"{{ end }}>Sobre</a>
+                <button class="theme-toggle" type="button" data-theme-toggle aria-label="Ativar tema escuro" aria-pressed="false" title="Ativar tema escuro">
+                    <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M20.6 15.5A8.5 8.5 0 0 1 8.5 3.4 8.5 8.5 0 1 0 20.6 15.5Z"></path>
+                    </svg>
+                    <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+                    </svg>
+                </button>
             </nav>
         </div>
     </header>
