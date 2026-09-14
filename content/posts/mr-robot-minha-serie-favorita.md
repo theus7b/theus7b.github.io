@@ -1,6 +1,6 @@
 ---
 
-title: "Mr. Robot — a série que se tornou a minha favorita"
+title: "#01 - Mr. Robot — a série que se tornou a minha favorita"
 date: 2026-09-13
 draft: false
 description: "Como Mr. Robot se tornou minha série favorita e como a obra despertou ainda mais meu interesse por tecnologia, hacking, segurança e computação."

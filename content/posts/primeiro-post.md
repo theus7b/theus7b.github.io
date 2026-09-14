@@ -1,5 +1,5 @@
 ---
-title: "Por que eu resolvi criar este blog"
+title: "#00 - Por que eu resolvi criar este blog"
 date: 2026-09-13
 draft: false
 description: "Por que eu quis criar um espaço próprio para guardar ideias, opiniões e tudo aquilo que passa pela minha cabeça."
